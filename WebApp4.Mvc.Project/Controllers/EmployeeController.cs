@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApp4.Mvc.Project.Models;
+using WebApp3.DataBase.Model;
 using WebApp3.DataBase.DataAccess;
 
 namespace WebApp4.Mvc.Project.Controllers
@@ -24,10 +24,11 @@ namespace WebApp4.Mvc.Project.Controllers
 
         IEnumerable<Employee> GetEmployees()
         {
-            using (DBModel db = new DBModel())
-            {
-                return db.Employees.ToList().OrderByDescending(emp => emp.BusinessEntityID);
-            }
+            //using (WebApp4.Mvc.Project.Models.DBModel db = new WebApp4.Mvc.Project.Models.DBModel())
+            //{
+            //    return db.Employees.ToList().OrderByDescending(emp => emp.BusinessEntityID);
+            //}
+            return null;
         }
 
         public ActionResult AddOrEdit(int id = 0)
@@ -39,6 +40,7 @@ namespace WebApp4.Mvc.Project.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(Employee emp)
         {
+            var empda = new EmployeeDataAcces();
 
             emp.rowguid = Guid.NewGuid();
             emp.BirthDate = Convert.ToDateTime("2000-01-01");
@@ -51,11 +53,11 @@ namespace WebApp4.Mvc.Project.Controllers
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 emp.ImagePath = "~/AppFiles/Images/" + fileName;
 
-                using (DBModel db = new DBModel())
-                {
-                    db.Employees.Add(emp);
-                    db.SaveChanges();
-                }
+                //using (DBModel db = new DBModel())
+                //{
+                //    db.Employees.Add(emp);
+                //    db.SaveChanges();
+                //}
 
                 emp.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/AppFiles/Images/"), fileName));
             }
