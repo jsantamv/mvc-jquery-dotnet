@@ -44,17 +44,33 @@ namespace WebApp3.DataBase.DataAccess
                 connection.Close();
             }
         }
-        
-        /// <summary>
-        /// Forma de llamdo asyncrono
-        /// </summary>
-        /// <param name="emp"></param>
-        /// <returns></returns>
+
+        public IEnumerable<Employee> List()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["DBModel"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                string sql = "Select * from HumanResources.Employee";
+                connection.Open();
+                IEnumerable<Employee> result = connection.Query<Employee>(sql);
+                connection.Close();
+                return result;
+            }
+        }
+
+
+        #region Asincronicos
         public Task AddOrEditAsync(Employee emp)
         {
             return Task.Run(() => { AddOrEdit(emp); });
         }
 
+        public Task ListAsync()
+        {
+            return Task.Run(() => { List(); });
+        }
+        #endregion
 
     }
 }

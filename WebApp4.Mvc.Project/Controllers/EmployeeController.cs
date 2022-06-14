@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp3.DataBase.Model;
 using WebApp3.DataBase.DataAccess;
+using System.Threading.Tasks;
 
 namespace WebApp4.Mvc.Project.Controllers
 {
@@ -17,19 +18,29 @@ namespace WebApp4.Mvc.Project.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult ViewAll()
-        {
+        {            
             return View(GetEmployees());
         }
 
         IEnumerable<Employee> GetEmployees()
         {
-            //using (WebApp4.Mvc.Project.Models.DBModel db = new WebApp4.Mvc.Project.Models.DBModel())
-            //{
-            //    return db.Employees.ToList().OrderByDescending(emp => emp.BusinessEntityID);
-            //}
-            return null;
+            EmployeeDataAcces emp = new EmployeeDataAcces();
+            return emp.List();
         }
+
+
+        [HttpGet, ActionName("List")]
+        public ActionResult List()
+        {
+            //https://www.youtube.com/watch?v=u147Q0NY6Qg
+            EmployeeDataAcces emp = new EmployeeDataAcces();            
+            var employees = emp.List().ToList();            
+            return Json(new { data = employees }, JsonRequestBehavior.AllowGet);
+        }
+
+
 
         public ActionResult AddOrEdit(int id = 0)
         {

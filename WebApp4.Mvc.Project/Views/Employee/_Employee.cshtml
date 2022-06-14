@@ -1,0 +1,39 @@
+﻿<div class="row">
+
+    <button type="button" class="btn btn-primary" onclick="fillDataTable()">Primary</button>
+
+    <table id="employee-list" class="table" style="width:100%">
+        <thead>
+            <tr>
+                <th>BusinessEntityID</th>
+                <th>NationalIDNumber</th>
+                <th>LoginID</th>
+                <th>OrganizationLevel</th>
+                <th>JobTitle</th>
+                <th>BirthDate</th>
+                <th>MaritalStatus</th>
+                <th>Gender</th>
+                <th>HireDate</th>
+                <th>SalariedFlag</th>
+                <th>VacationHours</th>
+                <th>SickLeaveHours</th>
+                <th>CurrentFlag</th>
+                <th>rowguid</th>
+                <th>ModifiedDate</th>
+                <th>ImagePath</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                @* <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Extn.</th>
+                    <th>Start date</th>
+                    <th>Salary</th> *@
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<script src="~/Scripts/Employee/employee.js"></script>
