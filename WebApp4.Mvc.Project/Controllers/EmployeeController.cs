@@ -10,6 +10,20 @@ using System.Threading.Tasks;
 
 namespace WebApp4.Mvc.Project.Controllers
 {
+    public class Parameters
+    {
+        public int IdEmployee { get; set; }
+        public string Name { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public override string ToString()
+        {
+            return $"IdEmployee: {IdEmployee} Name: {Name} StartDate: {StartDate:yyyy-MM-dd} EndDate:{EndDate:yyyy-MM-dd}";
+        }
+
+    }
+
     public class EmployeeController : Controller
     {
         // GET: Employee
@@ -20,7 +34,7 @@ namespace WebApp4.Mvc.Project.Controllers
 
         [HttpGet]
         public ActionResult ViewAll()
-        {            
+        {
             return View(GetEmployees());
         }
 
@@ -35,11 +49,18 @@ namespace WebApp4.Mvc.Project.Controllers
         public ActionResult List()
         {
             //https://www.youtube.com/watch?v=u147Q0NY6Qg
-            EmployeeDataAcces emp = new EmployeeDataAcces();            
-            var employees = emp.List().ToList();            
+            EmployeeDataAcces emp = new EmployeeDataAcces();
+            var employees = emp.List().ToList();
             return Json(new { data = employees }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet, ActionName("list-param")]
+        public ActionResult List(Parameters param)
+        {
+            EmployeeDataAcces emp = new EmployeeDataAcces();
+            var employees = emp.List().ToList();
+            return Json(new { data = employees }, JsonRequestBehavior.AllowGet);
+        }
 
 
         public ActionResult AddOrEdit(int id = 0)
