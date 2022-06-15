@@ -1,39 +1,53 @@
-﻿<div class="row">
+﻿
+<div class="row">
 
     <button type="button" class="btn btn-primary" onclick="fillDataTable()">Primary</button>
     <hr />
-    <table id="employee-list" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>BusinessEntityID</th>
-                <th>NationalIDNumber</th>
-                <th>LoginID</th>
-                <th>OrganizationLevel</th>
-                <th>JobTitle</th>
-                <th>BirthDate</th>
-                <th>MaritalStatus</th>
-                <th>Gender</th>
-                <th>HireDate</th>
-                <th>SalariedFlag</th>
-                <th>VacationHours</th>
-                <th>SickLeaveHours</th>
-                <th>CurrentFlag</th>
-                <th>rowguid</th>
-                <th>ModifiedDate</th>
-                <th>ImagePath</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                @* <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Extn.</th>
-                    <th>Start date</th>
-                    <th>Salary</th> *@
-            </tr>
-        </tfoot>
-    </table>
+    <div class="col-md-12">
+        <table id="employee-list" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>BusinessEntityID</th>
+                    <th>NationalIDNumber</th>
+                    <th>LoginID</th>
+                    <th>OrganizationLevel</th>
+                    <th>JobTitle</th>
+                    <th>BirthDate</th>
+                    <th>MaritalStatus</th>
+                    <th>Gender</th>
+                    <th>HireDate</th>
+                    <th>SalariedFlag</th>
+                    <th>VacationHours</th>
+                    <th>SickLeaveHours</th>
+                    <th>CurrentFlag</th>
+                    <th>rowguid</th>
+                    <th>ModifiedDate</th>
+                    <th>ImagePath</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    @* <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Extn.</th>
+                        <th>Start date</th>
+                        <th>Salary</th> *@
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 <script src="~/Scripts/Employee/employee.js"></script>
+
+@*<script>
+    $(document).ready(function () {
+        $('#employee-list').DataTable({
+            deferRender: true,
+            scrollX: true,
+            scrollY: 500,
+        });
+    });
+</script>*@

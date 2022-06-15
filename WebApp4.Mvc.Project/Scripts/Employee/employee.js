@@ -6,10 +6,13 @@ const param = {
     "StartDate": "2022-05-05"
 }
 
-const fillDataTable = () => {
+const fillDataTable = () => {    
     $('#employee-list').DataTable({
+        deferRender: true,
+        scrollX: true,
+        scrollY: 500,        
         'ajax': {
-            'url': 'Employee/list-param',
+            'url': 'list-param',
             'type': "GET",
             'contentType': 'application/json',
             'data': param

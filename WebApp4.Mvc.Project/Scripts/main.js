@@ -1,4 +1,7 @@
-﻿const showImagePreview = (imageUploader, previewImage) => {
+﻿
+const modalExample = document.getElementById('exampleModal');
+
+const showImagePreview = (imageUploader, previewImage) => {
 
     if (imageUploader.files && imageUploader.files[0]) {
         const reader = new FileReader();
@@ -32,4 +35,12 @@ const jQueryAjaxPost = (form) => {
         }
         $.ajax(ajaxConfig);
     }
+}
+
+const closeModal = (idModal) => {
+    $(`#${idModal}`).modal('hide');
+}
+
+const saveData = () => {
+    alert('Tomela con leche');
 }
